@@ -9,7 +9,7 @@ public class MyArrayList {
         }
 
         public void add(int value){
-            if(size == array.length){
+            if( size == array.length) {
                 grow();
             }
             array[size] = value;
@@ -25,9 +25,9 @@ public class MyArrayList {
             array = newArray;
         }
 
-        public boolean contains(int element){
+        public boolean contains(int element) {
             for (int i = 0; i < size; i++) {
-                if(array[i] == element){
+                if (array[i] == element) {
                     return true;
                 }
             }
@@ -44,28 +44,20 @@ public class MyArrayList {
             return size;
         }
 
-        public void addWithoutNewArray(int index, int element){
-            add(element);
-            int temp = array[index];
-            array[index] = array[size() - 1];
-            for (int i = size - 1; i >= index + 2; i--) {
-                array[i] = array[i - 1];
+        public void addWithoutNewArray(int index, int value) {
+            if (size == array.length) {
+                grow();
             }
-            array[index + 1] = temp;
-        }
 
-        public void addWithNewArray(int index, int element){
-            int[] newArray = new int[array.length + 1];
-            for (int i = 0; i < index; i++) {
-                newArray[i] = array[i];
+            int lastIndex = size - 1;
+            for (int i = lastIndex; i >= index; i--) {
+                array[i + 1] = array[i];
             }
-            newArray[index] = element;
-            for (int i = index + 1; i < newArray.length; i++) {
-                newArray[i] = array[i - 1];
-            }
-            array = newArray;
+
+            array[index] = value;
             size++;
         }
+
 
         public void remove(int index){
             for (int i = index; i < array.length - 1; i++) {
