@@ -8,15 +8,15 @@ public class MyArrayList {
             array = new int[10];
         }
 
-        public void add(int value){
-            if( size == array.length) {
+        public void add(int value) {
+            if (size == array.length) {
                 grow();
             }
             array[size] = value;
             size++;
         }
 
-        private void grow(){
+        private void grow() {
             int[] newArray = new int[array.length * 2];
 
             for (int i = 0; i < array.length; i++) {
@@ -33,18 +33,19 @@ public class MyArrayList {
             }
             return false;
         }
+
         public int size() {
             if (array == null) {
                 return 0;
             }
             int size = 0;
-            for (int i = 0; i < array.length; i++) {
+            for (int i = 0; i < size; i++) {
                 size = (array[i] != 0) ? ++size : size;
             }
             return size;
         }
 
-        public void addWithoutNewArray(int index, int value) {
+        public void add(int index, int value) {
             if (size == array.length) {
                 grow();
             }
@@ -58,12 +59,11 @@ public class MyArrayList {
             size++;
         }
 
-
         public void remove(int index){
-            for (int i = index; i < array.length - 1; i++) {
+            for (int i = index; i < size - 1; i++) {
                 array[i] = array[i + 1];
             }
-            array[array.length - 1] = 0;
+            array[size - 1] = 0;
             size--;
         }
 
